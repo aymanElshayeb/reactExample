@@ -7,8 +7,8 @@ export interface User {
 }
 
 export interface Task {
-    id: string| null;
+    id: string| "";
     name: string | null;
-    description: | null;
+    description: string| null;
     deadline: Date| null;
 }
