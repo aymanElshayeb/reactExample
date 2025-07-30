@@ -6,9 +6,14 @@ export const updateTask = createEvent<Task>();
 export const deleteTask = createEvent<string>();
 export const searchTask = createEvent<string>();
 
+const incrementIndex = createEvent();
+const $index = createStore(0).on(incrementIndex, (state) => state + 1);
+
 // Store for all tasks (the source of truth)
-export const $allTasks = createStore<Task[]>([])
-    .on(addTask, (state, task) => [...state, task])
+export const $allTasks = createStore<Task[]>([]).on(addTask, (state, task) => {
+    const newTask = { ...task, id: ""+$index.getState() }; // Assign a new ID based on current length
+    return [...state, newTask]; // Add the new task to the state
+})
     .on(updateTask, (state, updatedTask) => {
         const index = state.findIndex(task => task.id === updatedTask.id);
         if (index !== -1) {
@@ -23,6 +28,14 @@ export const $allTasks = createStore<Task[]>([])
 // Store for filtered tasks (what you show in the table)
 export const $tasks = createStore<Task[]>([])
     .on($allTasks, (_, tasks) => tasks);
+
+
+
+// Update $index after task is added
+sample({
+    clock: addTask,
+    target: incrementIndex,
+});
 
 // Update $tasks on search
 sample({

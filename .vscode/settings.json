@@ -1,0 +1,72 @@
+{
+    "jest.jestCommandLine": "npm test --",
+    "jest.autoRun": {
+        "watch": false,
+        "onStartup": ["all-tests"]
+    },
+    "jest.showCoverageOnLoad": false,
+    "jest.debugMode": true,
+    
+    // Test Explorer settings
+    "testExplorer.useNativeTesting": true,
+    
+    // File associations
+    "files.associations": {
+        "*.test.tsx": "typescriptreact",
+        "*.test.ts": "typescript",
+        "*.spec.tsx": "typescriptreact",
+        "*.spec.ts": "typescript"
+    },
+    
+    // Auto save settings for better test development
+    "files.autoSave": "onFocusChange",
+    
+    // Terminal settings
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    
+    // TypeScript settings
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    
+    // ESLint settings
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    
+    // Emmet settings for React
+    "emmet.includeLanguages": {
+        "typescriptreact": "html"
+    },
+    
+    // Search exclude patterns
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/build": true,
+        "**/coverage": true,
+        "**/.git": true
+    },
+    
+    // File watcher exclude patterns
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/build/**": true,
+        "**/coverage/**": true
+    },
+    
+    // Editor settings for test files
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.formatOnSave": true
+    },
+    
+    // Code lens settings
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.implementationsCodeLens.enabled": true
+}
